@@ -22,45 +22,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $todos = ["content" => $saisie, "todoStatement" => 0];
         $stmt = $pdo->prepare("INSERT INTO todos (content, todoStatement) VALUES (:content, :todoStatement)");
         $stmt->execute($todos);
-        $saisie = "vide";
+        $saisie = "";
     }
-    // $saisie = filter_var($saisie, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $saisie = filter_var($_POST["saisie"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $todos = ["content" => $saisie];
 }
 
-// $done = $_POST["applyButton"];
-// $todone = ["done" => $done];
-// $stmt2 = $pdo->prepare("INSERT INTO todos (done) VALUES (todo)");
-// $stmt3 = $pdo->prepare("INSERT INTO todos (done) VALUES (done)");
-// $stmt2->execute();
-
-
-
-
-
-
 $stmt = $pdo->prepare("SELECT * FROM todos");
 $stmt->execute();
 
 $datas = $stmt->fetchAll();
 
-
-
-
-// if (isset($datas)) {
-//     $stmt2 = $pdo->prepare("INSERT INTO todos (done) VALUES (todo)");
-//     $stmt2->execute();
-// }
-
-
-
-
-
 // ====================================================================
-
 
 require_once "_head.php";
 ?>
@@ -83,7 +58,7 @@ require_once "_header.php";
 
                 <input type="text" name="saisie" id="saisie" class="d-flex x-center " value="<?= $saisie ?? "" ?>">
 
-                <button type="submit" value="Valider" id="addButton" class="d-flex x-center">Ajouter</button>
+                <button type="submit" value="Valider" id="addButton" class="d-flex x-center y-center">Ajouter</button>
 
             </form>
 
@@ -94,8 +69,8 @@ require_once "_header.php";
             foreach ($datas as $value) {
                 if ($value["todoStatement"] == 0) {
                 ?>
-                <div class="container">
-                    <div class="row d-flex toggleBackground">
+                <div class="listContainer alternateBackground">
+                    <div class="row d-flex">
                         <div class="col1 d-flex">
                             <p class="d-flex"> <?= $value["content"] ?> </p>
                         </div>
@@ -110,15 +85,15 @@ require_once "_header.php";
                 <?php
                 } else {
                 ?>
-                <div class="container">
-                    <div class="row d-flex toggleBackground">
+                <div class="listContaine alternateBackgroundr">
+                    <div class="row d-flex">
                         <div class="col1 d-flex">
                             <p class='cancel d-flex'><?= $value["content"] ?></p>
                         </div>
-                        <div class="col2 d-flex">
+                        <div class="col2 d-flex x-center">
                             <a href="/cancel.php?id=<?= $value['todoId'] ?>">Annuler</a>
                         </div>
-                        <div class="col3 d-flex">
+                        <div class="col3 d-flex x-center">
                             <a href="/delete.php?id=<?= $value['todoId'] ?>">Supprimer</a>
                         </div>
                     </div>

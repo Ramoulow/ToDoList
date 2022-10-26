@@ -35,11 +35,17 @@
 
 header {
     background-color: rgb(140, 42, 135);
-    height: 40px;
+    min-height: 40px;
 }
 
 body {
     height: 100vh;
+}
+
+footer {
+    background-color: rgb(50, 47, 61);
+    min-height: 40px;
+    justify-content: flex-end;
 }
 
 .p-header {
@@ -49,9 +55,14 @@ body {
 }
 
 .container {
-    height: 200px;
-    width: 500px;
+    min-height: 200px;
+    min-width: 500px;
     border-radius: 3%;
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+
 }
 
 .main-container {
@@ -62,24 +73,24 @@ body {
     padding: 0 1rem;
 }
 
-#champ {
+#saisie {
     text-decoration: none;
     flex: 1;
     border: 1px solid rgb(197, 197, 197);
-    border-radius: 1%;
+    border-radius: 2%;
+    min-width: fit-content;
+    padding: 0.2rem;
 }
 
-#bouton {
+#addButton {
     background-color: rgb(140, 42, 135);
     color: white;
     border-style: none;
     margin-left: 10px;
-}
-
-footer {
-    background-color: rgb(50, 47, 61);
-    height: 40px;
-    justify-content: flex-end;
+    border-radius: 3px;
+    font-weight: bold;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .p-footer {
@@ -87,13 +98,17 @@ footer {
     margin-right: 20px;
 }
 
-.toggleBackground:nth-child(even) {
-    background-color: rgb(235, 235, 235);
-    min-width: 100%;
+.alternateBackground:nth-child(even) {
+    background-color: rgb(190, 188, 188);
 }
 
-.container {
-    
+.alternateBackground:nth-child(odd) {
+    background-color: white;
+}
+
+.listContainer {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .row {
